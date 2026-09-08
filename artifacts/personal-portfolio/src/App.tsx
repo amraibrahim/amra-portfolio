@@ -7,6 +7,7 @@ import {
   Copy,
   ExternalLink,
   Linkedin,
+  Mail,
   MapPin,
   Menu,
   Moon,
@@ -22,7 +23,8 @@ import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 
 const queryClient = new QueryClient();
 const linkedinUrl = 'https://www.linkedin.com/in/amraibrahimr/';
-const sectionIds = ['about', 'work', 'experience', 'writing', 'contact'];
+const emailAddress = 'ibrahimar2@vcu.edu';
+const sectionIds = ['about', 'work', 'experience', 'leadership', 'writing', 'contact'];
 
 const projects = [
   {
@@ -81,6 +83,9 @@ const experiences = [
     detail:
       'Built a RAG and Kafka pipeline for server telemetry and support logs, cleaning 14K+ entries with Python, Pandas, FAISS, and ChromaDB.',
   },
+];
+
+const leadership = [
   {
     date: 'Aug 2025 — now',
     organization: 'ColorStack @ VCU',
@@ -91,6 +96,12 @@ const experiences = [
 ];
 
 const writing = [
+  {
+    date: 'LinkedIn · Featured',
+    title: 'Featured LinkedIn post',
+    excerpt: 'A recent piece of writing from Amra Ibrahim, shared on LinkedIn.',
+    href: 'https://lnkd.in/p/ei6a_Y3f',
+  },
   {
     date: 'Focus · AI systems',
     title: 'Building AI that earns trust',
@@ -181,7 +192,7 @@ function Home() {
             <span className="wordmark-mark" aria-hidden="true">
               I
             </span>
-            <span>ibrahim amra / notebook</span>
+            <span>amra ibrahim / notebook</span>
           </a>
 
           <nav className="desktop-nav" aria-label="Primary navigation">
@@ -192,7 +203,11 @@ function Home() {
                 key={id}
                 data-testid={`link-nav-${id}`}
               >
-                {id === 'work' ? 'Selected work' : id}
+                {id === 'work'
+                  ? 'Selected work'
+                  : id === 'leadership'
+                    ? 'Leadership & Professional Development'
+                    : id}
               </a>
             ))}
           </nav>
@@ -230,7 +245,11 @@ function Home() {
                 onClick={closeMenu}
                 data-testid={`link-mobile-nav-${id}`}
               >
-                {id === 'work' ? 'Selected work' : id}
+                {id === 'work'
+                  ? 'Selected work'
+                  : id === 'leadership'
+                    ? 'Leadership & Professional Development'
+                    : id}
               </a>
             ))}
           </nav>
@@ -246,7 +265,7 @@ function Home() {
             <h1 className="hero-title reveal reveal-delay-1" id="hero-title" data-testid="text-hero-title">
               I make complex systems <em>feel</em> useful.</h1>
             <p className="hero-dek reveal reveal-delay-2" data-testid="text-hero-description">
-              I&apos;m Ibrahim Amra — a <strong>software engineer building with AI, data, and thoughtful systems</strong> that
+              I&apos;m Amra Ibrahim — a <strong>software engineer building with AI, data, and thoughtful systems</strong> that
               turn difficult problems into clearer decisions.
             </p>
             <div className="hero-ctas reveal reveal-delay-3">
@@ -266,7 +285,7 @@ function Home() {
             </p>
             <p className="aside-note" data-testid="text-location">
               <MapPin size={13} strokeWidth={1.6} aria-hidden="true" /> Based in
-              <strong>Richmond, VA / UTC−05</strong>
+              <strong>Greater Washington, DC Area / UTC−05</strong>
             </p>
             <div className="scroll-prompt" aria-hidden="true">
               <span />
@@ -382,9 +401,31 @@ function Home() {
           </div>
         </section>
 
+        <section className="section" id="leadership" aria-labelledby="leadership-title">
+          <div className="section-heading">
+            <p className="section-kicker">04 / Leadership & Professional Development</p>
+            <h2 className="section-title" id="leadership-title" data-testid="text-leadership-title">
+              Building the <em>room around the work.</em>
+            </h2>
+          </div>
+          <div className="experience-list">
+            {leadership.map((item, index) => (
+              <article className="experience-row" key={item.organization} data-testid={`row-leadership-${index + 1}`}>
+                <span className="experience-date">{item.date}</span>
+                <span className="experience-org">{item.organization}</span>
+                <div className="experience-detail">
+                  <h3 className="experience-role">{item.role}</h3>
+                  <p className="experience-detail">{item.detail}</p>
+                </div>
+                <span className="experience-index">0{index + 1}</span>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="section" id="writing" aria-labelledby="writing-title">
           <div className="section-heading">
-            <p className="section-kicker">04 / Writing</p>
+            <p className="section-kicker">05 / Writing</p>
             <h2 className="section-title" id="writing-title" data-testid="text-writing-title">
               Questions from the <em>workbench.</em>
             </h2>
@@ -419,7 +460,7 @@ function Home() {
         <section className="section contact-section" id="contact" aria-labelledby="contact-title">
           <div className="contact-panel">
             <div>
-              <p className="section-kicker">05 / Contact</p>
+              <p className="section-kicker">06 / Contact</p>
               <h2 className="contact-title" id="contact-title" data-testid="text-contact-title">
                 Have a good question?
               </h2>
@@ -429,6 +470,10 @@ function Home() {
               </p>
             </div>
             <div className="contact-links">
+              <a className="contact-link" href={`mailto:${emailAddress}`} data-testid="link-email">
+                <span><Mail size={14} strokeWidth={1.5} aria-hidden="true" /> {emailAddress}</span>
+                <ArrowUpRight size={15} strokeWidth={1.5} />
+              </a>
               <a className="contact-link" href={linkedinUrl} target="_blank" rel="noreferrer" data-testid="link-linkedin">
                 <span><Linkedin size={14} strokeWidth={1.5} aria-hidden="true" /> Connect on LinkedIn</span>
                 <ArrowUpRight size={15} strokeWidth={1.5} />
@@ -445,7 +490,7 @@ function Home() {
         </section>
 
         <footer className="footer">
-          <p data-testid="text-footer-name">Ibrahim Amra / software engineer</p>
+          <p data-testid="text-footer-name">Amra Ibrahim / software engineer</p>
           <p data-testid="text-footer-note"><Rss size={12} strokeWidth={1.5} aria-hidden="true" /> Last updated · 2026</p>
         </footer>
       </main>
