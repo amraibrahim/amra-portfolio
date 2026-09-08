@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Personal Portfolio"
+description = "A creative personal portfolio website with an expressive visual identity, animated project presentation, and responsive layout for showcasing work, skills, and contact details."
+version = "1.0.0"
+id = "artifacts/personal-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20176
+
+[services.development]
+run = "pnpm --filter @workspace/personal-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/personal-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/personal-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20176"
+BASE_PATH = "/"
