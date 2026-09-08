@@ -6,9 +6,7 @@ import {
   Check,
   Copy,
   ExternalLink,
-  Github,
   Linkedin,
-  Mail,
   MapPin,
   Menu,
   Moon,
@@ -23,93 +21,103 @@ import NotFound from '@/pages/not-found';
 import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 
 const queryClient = new QueryClient();
-const emailAddress = 'hello@maya-ortiz.dev';
+const linkedinUrl = 'https://www.linkedin.com/in/amraibrahimr/';
 const sectionIds = ['about', 'work', 'experience', 'writing', 'contact'];
 
 const projects = [
   {
-    year: '2024',
-    name: 'Northstar',
-    type: 'Product system',
+    year: '2026',
+    name: 'Developer sentiment survey system',
+    type: 'Platform engineering',
     summary:
-      'A calm operating layer for small teams to see what is moving, what is stuck, and what deserves a conversation.',
-    href: 'https://github.com/placeholder-name/northstar',
+      'An end-to-end Azure developer sentiment system connecting internal tooling and telemetry through a resilient ports-and-adapters architecture.',
+    href: linkedinUrl,
   },
   {
-    year: '2023',
-    name: 'Field Notes',
-    type: 'Editorial tool',
+    year: '2026',
+    name: 'Enterprise AI insight workflows',
+    type: 'AI / ML engineering',
     summary:
-      'A tiny publishing workflow for turning rough research into clear, human-facing documentation.',
-    href: 'https://github.com/placeholder-name/field-notes',
+      'Multi-agent workflows for service-desk, network, and performance data, with vector search and enterprise API integrations for operational insight.',
+    href: linkedinUrl,
   },
   {
-    year: '2022',
-    name: 'Common Ground',
-    type: 'Civic technology',
+    year: '2025',
+    name: 'Real-time server telemetry intelligence',
+    type: 'RAG / data systems',
     summary:
-      'A public data explorer that helped neighborhood groups make sense of long-term housing change.',
-    href: 'https://github.com/placeholder-name/common-ground',
+      'A Kafka-connected RAG pipeline for Dell server telemetry and support logs that processed 14K+ entries and cut inference latency by 75%.',
+    href: linkedinUrl,
   },
   {
-    year: '2021',
-    name: 'Tiny Signals',
-    type: 'Open source',
+    year: '2025',
+    name: 'Local Drink Finder',
+    type: 'Applied AI',
     summary:
-      'Small interface patterns for making system status feel legible instead of alarming.',
-    href: 'https://github.com/placeholder-name/tiny-signals',
+      'An AI-powered café and boba matcher using natural-language search, sentence transformers, and LLMs to surface culturally specific drinks.',
+    href: linkedinUrl,
   },
 ];
 
 const experiences = [
   {
-    date: '2022 — now',
-    organization: 'Independent',
-    role: 'Product engineer & designer',
+    date: 'May — Aug 2026',
+    organization: 'LinkedIn',
+    role: 'Software Engineer Intern',
     detail:
-      'Partnering with teams at the fuzzy beginning: shaping the problem, prototyping the right thing, and shipping the useful version.',
+      'Built a secure, read-only data layer and MySQL persistence system for an Azure developer sentiment survey, plus a Slack Block Kit bot with fatigue controls and no inbound ingress.',
   },
   {
-    date: '2019 — 2022',
-    organization: 'Goodweather',
-    role: 'Founding product engineer',
+    date: 'Feb — May 2026',
+    organization: 'Leidos · SMIT',
+    role: 'AI/ML Software Engineer Intern',
     detail:
-      'Built the first product team and a shared design system while taking a climate analytics platform from prototype to 14k weekly users.',
+      'Designed multi-agent AI orchestration workflows and applied-AI insight pipelines across Jira, Splunk, ServiceNow, Ask Sage, and Azure Data.',
   },
   {
-    date: '2016 — 2019',
-    organization: 'Studio Onda',
-    role: 'Designer / front-end developer',
+    date: 'May — Aug 2025',
+    organization: 'Dell Technologies',
+    role: 'Software Engineer Intern',
     detail:
-      'Made digital tools, exhibits, and identities for museums, public-interest organizations, and people with a point of view.',
+      'Built a RAG and Kafka pipeline for server telemetry and support logs, cleaning 14K+ entries with Python, Pandas, FAISS, and ChromaDB.',
+  },
+  {
+    date: 'Aug 2025 — now',
+    organization: 'ColorStack @ VCU',
+    role: 'Founder & President',
+    detail:
+      'Founded VCU’s first ColorStack chapter and built a community around technical growth, career development, partnerships, and belonging in computer science.',
   },
 ];
 
 const writing = [
   {
-    date: 'Notes · 08 min',
-    title: 'The interface is not the product',
+    date: 'Focus · AI systems',
+    title: 'Building AI that earns trust',
     excerpt:
-      'A field guide to the quiet decisions that make a tool feel trustworthy before anyone reads the documentation.',
-    href: 'https://example.com/the-interface-is-not-the-product',
+      'Exploring the space between impressive demos and dependable systems: retrieval, orchestration, guardrails, and useful explanations.',
+    href: linkedinUrl,
   },
   {
-    date: 'Process · 05 min',
-    title: 'On making room for the wrong idea',
-    excerpt: 'Why the first prototype should be a little embarrassing.',
-    href: 'https://example.com/making-room',
+    date: 'Focus · Data',
+    title: 'From raw logs to useful signals',
+    excerpt:
+      'Working with telemetry, support data, and vector search to help technical teams see the pattern inside the noise.',
+    href: linkedinUrl,
   },
   {
-    date: 'Systems · 07 min',
-    title: 'A small case for boring software',
-    excerpt: 'Less novelty, more things that stay out of the way.',
-    href: 'https://example.com/boring-software',
+    date: 'Focus · Community',
+    title: 'Community is infrastructure',
+    excerpt:
+      'Why creating access, mentorship, and room to grow is part of building a stronger technical future.',
+    href: linkedinUrl,
   },
   {
-    date: 'Practice · 04 min',
-    title: 'What I mean by “done”',
-    excerpt: 'A definition that leaves space for care after launch.',
-    href: 'https://example.com/what-done-means',
+    date: 'Focus · Product',
+    title: 'Make the hard thing legible',
+    excerpt:
+      'A product is doing its job when complexity becomes a clear next step for the person using it.',
+    href: linkedinUrl,
   },
 ];
 
@@ -120,13 +128,13 @@ function Home() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    const savedTheme = window.localStorage.getItem('maya-theme');
+    const savedTheme = window.localStorage.getItem('ibrahim-theme');
     setDarkMode(savedTheme === 'dark');
   }, []);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode);
-    window.localStorage.setItem('maya-theme', darkMode ? 'dark' : 'light');
+    window.localStorage.setItem('ibrahim-theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
 
   useEffect(() => {
@@ -148,12 +156,12 @@ function Home() {
 
   const toggleTheme = () => setDarkMode((current) => !current);
 
-  const copyEmail = async () => {
+  const copyProfileLink = async () => {
     try {
-      await navigator.clipboard.writeText(emailAddress);
+      await navigator.clipboard.writeText(linkedinUrl);
     } catch {
       const textArea = document.createElement('textarea');
-      textArea.value = emailAddress;
+      textArea.value = linkedinUrl;
       document.body.appendChild(textArea);
       textArea.select();
       document.execCommand('copy');
@@ -171,9 +179,9 @@ function Home() {
         <div className="header-inner">
           <a className="wordmark" href="#top" onClick={closeMenu} data-testid="link-home">
             <span className="wordmark-mark" aria-hidden="true">
-              M
+              I
             </span>
-            <span>maya ortiz / notebook</span>
+            <span>ibrahim amra / notebook</span>
           </a>
 
           <nav className="desktop-nav" aria-label="Primary navigation">
@@ -233,13 +241,13 @@ function Home() {
         <section className="hero" aria-labelledby="hero-title">
           <div>
             <p className="eyebrow reveal" data-testid="text-hero-eyebrow">
-              Product engineer / designer · Brooklyn, NY
+              Software engineer / AI builder · Richmond, VA
             </p>
             <h1 className="hero-title reveal reveal-delay-1" id="hero-title" data-testid="text-hero-title">
-              I make useful things <em>feel</em> inevitable.</h1>
+              I make complex systems <em>feel</em> useful.</h1>
             <p className="hero-dek reveal reveal-delay-2" data-testid="text-hero-description">
-              I&apos;m Maya Ortiz — a <strong>product engineer and designer</strong> working at the
-              seam between a good question and a shipped answer.
+              I&apos;m Ibrahim Amra — a <strong>software engineer building with AI, data, and thoughtful systems</strong> that
+              turn difficult problems into clearer decisions.
             </p>
             <div className="hero-ctas reveal reveal-delay-3">
               <a className="button" href="#work" data-testid="link-hero-work">
@@ -254,11 +262,11 @@ function Home() {
           <aside className="hero-aside reveal reveal-delay-3" aria-label="Availability and location">
             <p className="aside-note" data-testid="text-availability">
               Currently
-              <strong>Open to a small number of good problems.</strong>
+              <strong>Building at the intersection of AI, data, and software.</strong>
             </p>
             <p className="aside-note" data-testid="text-location">
               <MapPin size={13} strokeWidth={1.6} aria-hidden="true" /> Based in
-              <strong>New York / UTC−05</strong>
+              <strong>Richmond, VA / UTC−05</strong>
             </p>
             <div className="scroll-prompt" aria-hidden="true">
               <span />
@@ -271,41 +279,41 @@ function Home() {
           <div className="section-heading">
             <p className="section-kicker">01 / About</p>
             <h2 className="section-title" id="about-title" data-testid="text-about-title">
-              Part builder, part <em>translator.</em>
+              Part builder, part <em>community builder.</em>
             </h2>
           </div>
           <div className="about-layout">
             <p className="about-lede" data-testid="text-about-lede">
-              I like the bit where an ambitious idea becomes a clear, calm experience someone can
-              actually use.
+              I like the point where complex systems become useful tools for real people.
             </p>
             <div className="about-copy" data-testid="text-about-story">
               <p>
-                For the last decade, I&apos;ve moved between designing interfaces and building the
-                systems underneath them. The job is different every time; the through-line is
-                making complexity legible without sanding off what makes a product special.
+                I&apos;m a software engineer interested in the systems behind useful AI: retrieval,
+                orchestration, telemetry, and data products that help teams make better decisions.
+                Across internships at LinkedIn, Leidos, and Dell Technologies, I&apos;ve built developer
+                sentiment surveys, multi-agent workflows, RAG pipelines, and real-time telemetry analysis.
               </p>
               <p>
-                I work best with people who care about the details, can change their minds, and
-                want to leave the thing better documented than they found it.
+                Outside of work, I founded VCU&apos;s first ColorStack chapter and care deeply about
+                creating more room for underrepresented students to grow in computer science.
               </p>
             </div>
           </div>
           <div className="principles" aria-label="Working principles">
             <article className="principle" data-testid="card-principle-01">
               <span className="principle-number">/ 01</span>
-              <h3>Start with the sentence.</h3>
-              <p>If we cannot say what it is for, we are not ready to build it.</p>
+               <h3>Build for the whole system.</h3>
+               <p>Reliable work respects the data, the interfaces, and the people around them.</p>
             </article>
             <article className="principle" data-testid="card-principle-02">
               <span className="principle-number">/ 02</span>
-              <h3>Make the middle visible.</h3>
-              <p>Good work is less mysterious when the decisions are recorded.</p>
+               <h3>Make intelligence useful.</h3>
+               <p>The best AI work gives someone a clearer next step, not just a clever output.</p>
             </article>
             <article className="principle" data-testid="card-principle-03">
               <span className="principle-number">/ 03</span>
-              <h3>Leave a useful trace.</h3>
-              <p>Ship the feature, the rationale, and a path for the next person.</p>
+               <h3>Bring people with you.</h3>
+               <p>Strong technical communities make better work possible for everyone.</p>
             </article>
           </div>
         </section>
@@ -340,14 +348,14 @@ function Home() {
             ))}
           </div>
           <div className="work-footer">
-            <a
-              className="text-link"
-              href="https://github.com/placeholder-name"
+               <a
+                 className="text-link"
+                 href={linkedinUrl}
               target="_blank"
               rel="noreferrer"
               data-testid="link-all-projects"
             >
-              More experiments on GitHub <ExternalLink size={13} strokeWidth={1.5} />
+               More about my work on LinkedIn <ExternalLink size={13} strokeWidth={1.5} />
             </a>
           </div>
         </section>
@@ -378,7 +386,7 @@ function Home() {
           <div className="section-heading">
             <p className="section-kicker">04 / Writing</p>
             <h2 className="section-title" id="writing-title" data-testid="text-writing-title">
-              Notes from the <em>workbench.</em>
+              Questions from the <em>workbench.</em>
             </h2>
           </div>
           <div className="writing-grid">
@@ -400,7 +408,7 @@ function Home() {
                   <p className="writing-excerpt">{entry.excerpt}</p>
                 </div>
                 <div className="writing-read">
-                  <span>Read note</span>
+                   <span>Explore focus</span>
                   <span aria-hidden="true">↗</span>
                 </div>
               </a>
@@ -416,49 +424,29 @@ function Home() {
                 Have a good question?
               </h2>
               <p className="contact-subtitle" data-testid="text-contact-description">
-                Tell me what you&apos;re trying to make, untangle, or understand. I&apos;ll write back
-                with a thoughtful next step.
+                Tell me what you&apos;re trying to make, untangle, or understand. The best place to
+                reach me is LinkedIn.
               </p>
             </div>
             <div className="contact-links">
-              <a className="contact-link" href={`mailto:${emailAddress}`} data-testid="link-email">
-                <span><Mail size={14} strokeWidth={1.5} aria-hidden="true" /> {emailAddress}</span>
+              <a className="contact-link" href={linkedinUrl} target="_blank" rel="noreferrer" data-testid="link-linkedin">
+                <span><Linkedin size={14} strokeWidth={1.5} aria-hidden="true" /> Connect on LinkedIn</span>
                 <ArrowUpRight size={15} strokeWidth={1.5} />
               </a>
-              <button className="contact-link" type="button" onClick={copyEmail} data-testid="button-copy-email">
+              <button className="contact-link" type="button" onClick={copyProfileLink} data-testid="button-copy-email">
                 <span>
                   {copied ? <Check size={14} strokeWidth={1.5} aria-hidden="true" /> : <Copy size={14} strokeWidth={1.5} aria-hidden="true" />}
-                  {copied ? 'Copied to clipboard' : 'Copy email address'}
+                  {copied ? 'Copied profile link' : 'Copy LinkedIn profile'}
                 </span>
                 {copied ? <Check size={15} strokeWidth={1.5} /> : <Copy size={15} strokeWidth={1.5} />}
               </button>
-              <a
-                className="contact-link"
-                href="https://www.linkedin.com/in/placeholder-name"
-                target="_blank"
-                rel="noreferrer"
-                data-testid="link-linkedin"
-              >
-                <span><Linkedin size={14} strokeWidth={1.5} aria-hidden="true" /> LinkedIn</span>
-                <ArrowUpRight size={15} strokeWidth={1.5} />
-              </a>
-              <a
-                className="contact-link"
-                href="https://github.com/placeholder-name"
-                target="_blank"
-                rel="noreferrer"
-                data-testid="link-github"
-              >
-                <span><Github size={14} strokeWidth={1.5} aria-hidden="true" /> GitHub</span>
-                <ArrowUpRight size={15} strokeWidth={1.5} />
-              </a>
             </div>
           </div>
         </section>
 
         <footer className="footer">
-          <p data-testid="text-footer-name">Maya Ortiz / independent product engineer</p>
-          <p data-testid="text-footer-note"><Rss size={12} strokeWidth={1.5} aria-hidden="true" /> Last updated · Spring 2024</p>
+          <p data-testid="text-footer-name">Ibrahim Amra / software engineer</p>
+          <p data-testid="text-footer-note"><Rss size={12} strokeWidth={1.5} aria-hidden="true" /> Last updated · 2026</p>
         </footer>
       </main>
     </div>
