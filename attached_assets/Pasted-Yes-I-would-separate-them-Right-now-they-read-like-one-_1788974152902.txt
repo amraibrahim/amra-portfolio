@@ -1,0 +1,105 @@
+Yes — I would separate them. Right now they read like one category, but **leading an organization** and **being selected for a conference/program** communicate very different things.
+
+Keep everything under:
+
+**04 / Leadership & Professional Development**
+
+Then break the section into three clear subsections:
+
+### Leadership & Organizations
+
+This should come first because these are the experiences where you actually held responsibility.
+
+* **ColorStack at Virginia Commonwealth University** — Founder & President
+* **Black Muslim Collective at Virginia Commonwealth University** — President
+* **National Society of Black Engineers at Virginia Commonwealth University** — Technical Outreach and Community Help Chair
+* **Virginia Commonwealth University College of Engineering** — Student Ambassador
+* **Amazon Web Services** — Student Ambassador
+
+I’d use the editorial row format you already have in the screenshot for these: date → organization → role → short description.
+
+---
+
+### Professional Development Programs
+
+Then use the card grid for structured programs, fellowships, scholarships, and selective development opportunities.
+
+* **Management Leadership for Tomorrow Career Preparation Program**
+* **Break Through Tech Artificial Intelligence and Machine Learning Fellowship**
+* **SEO Tech Developer Residency**
+* **Walmart Sophomore Discovery Summit**
+* **Accenture Student Leadership Program**
+* **Visa Upskill Tech Pathway**
+* **Citi Freshman Discovery Program**
+* **Capital One First Generation Focus**
+* **Amazon Web Services Spring Cloud Cohort**
+* **National Retail Federation Foundation Student Program — Ray Greenly Scholarship**
+
+This category tells the viewer: **I was selected for opportunities designed to develop me professionally.**
+
+---
+
+### Conferences & Summits
+
+Then give conferences their own smaller grid or row:
+
+* **Grace Hopper Celebration — Kamala Scholar**
+* **AFROTECH Conference**
+* **ColorStack Stacked Up Summit**
+* **Management Leadership for Tomorrow Tech Trek**
+* **Management Leadership for Tomorrow Summer Seminar at Deloitte University**
+* **University of Pennsylvania DEEPenn STEM Graduate School Preview**
+
+This tells the viewer: **I actively put myself in rooms where I could learn, network, and grow.**
+
+### Visually, I’d organize the page like this
+
+```text
+04 / LEADERSHIP & PROFESSIONAL DEVELOPMENT
+
+
+Building the room around
+the work.
+
+
+LEADERSHIP & ORGANIZATIONS
+
+ColorStack at Virginia Commonwealth University
+Founder & President
+...
+
+Black Muslim Collective at Virginia Commonwealth University
+President
+...
+
+National Society of Black Engineers at Virginia Commonwealth University
+Technical Outreach and Community Help Chair
+...
+
+
+PROFESSIONAL DEVELOPMENT PROGRAMS
+
+[ Management Leadership ] [ Break Through Tech ] [ SEO ]
+[ Walmart ]               [ Accenture ]          [ Visa ]
+[ Citi ]                  [ Capital One ]        [ NRF Foundation ]
+
+
+CONFERENCES & SUMMITS
+
+[ Grace Hopper ] [ AFROTECH ] [ ColorStack ]
+[ MLT Tech Trek ] [ Deloitte ] [ DEEPenn STEM ]
+```
+
+And yes, **avoid acronyms in the visible portfolio copy**. For example, don't write:
+
+> NSBE @ VCU
+> TORCH Chair
+
+Write:
+
+> **National Society of Black Engineers at Virginia Commonwealth University**
+> **Technical Outreach and Community Help Chair**
+
+You can still use the organization's actual logo, even if the logo itself contains an acronym. The surrounding text should spell the name out.
+
+I would also rename your current **“Professional Development & Conferences”** heading because combining those two is what makes the section feel a little muddy. The three-way split makes your accomplishments easier to understand without changing the overall **04 / Leadership & Professional Development** concept.

@@ -88,10 +88,150 @@ const experiences = [
 const leadership = [
   {
     date: 'Aug 2025 — now',
-    organization: 'ColorStack @ VCU',
+    organization: 'ColorStack at Virginia Commonwealth University',
     role: 'Founder & President',
     detail:
       'Founded VCU’s first ColorStack chapter and built a community around technical growth, career development, partnerships, and belonging in computer science.',
+  },
+  {
+    date: 'Leadership',
+    organization: 'Black Muslim Collective at Virginia Commonwealth University',
+    role: 'President',
+    detail:
+      'Led a student community focused on belonging, connection, and support across campus.',
+  },
+  {
+    date: 'Leadership',
+    organization: 'National Society of Black Engineers at Virginia Commonwealth University',
+    role: 'Technical Outreach and Community Help Chair',
+    detail:
+      'Supported technical outreach and community-building initiatives for engineering students.',
+  },
+  {
+    date: 'Leadership',
+    organization: 'Virginia Commonwealth University College of Engineering',
+    role: 'Student Ambassador',
+    detail:
+      'Represented the College of Engineering and helped prospective students connect with the VCU engineering community.',
+  },
+  {
+    date: 'Leadership',
+    organization: 'Amazon Web Services',
+    role: 'Student Ambassador',
+    detail:
+      'Connected students with cloud learning, technical resources, and opportunities to explore careers in technology.',
+  },
+];
+
+type DevelopmentOpportunity = {
+  logo: string;
+  organization: string;
+  title: string;
+  distinction?: string;
+  caption: string;
+};
+
+const professionalDevelopmentPrograms: DevelopmentOpportunity[] = [
+  {
+    logo: 'MLT',
+    organization: 'Management Leadership for Tomorrow',
+    title: 'Career Preparation Program',
+    caption: 'Career preparation and professional development',
+  },
+  {
+    logo: 'BTT',
+    organization: 'Break Through Tech',
+    title: 'Artificial Intelligence and Machine Learning Fellowship',
+    caption: 'Applied AI/ML development and career support',
+  },
+  {
+    logo: 'SEO',
+    organization: 'SEO',
+    title: 'Tech Developer Residency',
+    caption: 'Technical training and early-career development',
+  },
+  {
+    logo: 'W',
+    organization: 'Walmart',
+    title: 'Sophomore Discovery Summit',
+    caption: 'Selected for Walmart’s early-career development program',
+  },
+  {
+    logo: 'ACN',
+    organization: 'Accenture',
+    title: 'Student Leadership Program',
+    caption: 'Leadership and technology career development',
+  },
+  {
+    logo: 'V',
+    organization: 'Visa',
+    title: 'Upskill Tech Pathway',
+    caption: 'Technical and professional development program',
+  },
+  {
+    logo: 'CITI',
+    organization: 'Citi',
+    title: 'Freshman Discovery Program',
+    caption: 'Early-career technology and financial-services exposure',
+  },
+  {
+    logo: 'C1',
+    organization: 'Capital One',
+    title: 'First Generation Focus',
+    caption: 'Professional development for first-generation students',
+  },
+  {
+    logo: 'AWS',
+    organization: 'Amazon Web Services',
+    title: 'Spring Cloud Cohort',
+    caption: 'Cloud learning and technical community',
+  },
+  {
+    logo: 'NRF',
+    organization: 'NRF Foundation',
+    title: 'Student Program',
+    distinction: 'Ray Greenly Scholarship Recipient',
+    caption: 'Student development and scholarship community',
+  },
+];
+
+const conferences: DevelopmentOpportunity[] = [
+  {
+    logo: 'GHC',
+    organization: 'Grace Hopper Celebration',
+    title: 'Grace Hopper Celebration',
+    distinction: 'Kamala Scholar',
+    caption: 'Conference experience in Chicago',
+  },
+  {
+    logo: 'AFRO',
+    organization: 'AfroTech',
+    title: 'AFROTECH Conference',
+    caption: 'Technology, innovation, and career community',
+  },
+  {
+    logo: 'CS',
+    organization: 'ColorStack',
+    title: 'Stacked Up Summit',
+    caption: 'ColorStack technology and career summit',
+  },
+  {
+    logo: 'MLT',
+    organization: 'Management Leadership for Tomorrow',
+    title: 'Tech Trek',
+    caption: 'Technology industry exposure and networking',
+  },
+  {
+    logo: 'D',
+    organization: 'Deloitte University',
+    title: 'Summer Seminar',
+    caption: 'Management Leadership for Tomorrow seminar',
+  },
+  {
+    logo: 'DEEP',
+    organization: 'University of Pennsylvania',
+    title: 'DEEPenn STEM Graduate School Preview',
+    caption: 'Graduate school exploration for STEM students',
   },
 ];
 
@@ -137,6 +277,7 @@ function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
   const [copied, setCopied] = useState(false);
+  const [openOpportunity, setOpenOpportunity] = useState<string | null>(null);
 
   useEffect(() => {
     const savedTheme = window.localStorage.getItem('ibrahim-theme');
@@ -183,6 +324,48 @@ function Home() {
   };
 
   const closeMenu = () => setMenuOpen(false);
+
+  const renderDevelopmentGrid = (
+    opportunities: DevelopmentOpportunity[],
+    ariaLabel: string,
+  ) => (
+    <div className="development-grid" aria-label={ariaLabel}>
+      {opportunities.map((opportunity) => {
+        const isOpen = openOpportunity === opportunity.title;
+        const testId = opportunity.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        return (
+          <button
+            className={`development-card ${isOpen ? 'is-open' : ''}`}
+            type="button"
+            key={opportunity.title}
+            aria-expanded={isOpen}
+            onClick={() =>
+              setOpenOpportunity((current) =>
+                current === opportunity.title ? null : opportunity.title,
+              )
+            }
+            data-testid={`card-development-${testId}`}
+          >
+            <span className="development-logo-lockup" aria-hidden="true">
+              <span className="development-logo">
+                {opportunity.logo}
+              </span>
+              <span className="development-organization">
+                {opportunity.organization}
+              </span>
+            </span>
+            <span className="development-detail">
+              <span className="development-title">{opportunity.title}</span>
+              {opportunity.distinction && (
+                <span className="development-distinction">{opportunity.distinction}</span>
+              )}
+              <span className="development-caption">{opportunity.caption}</span>
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
 
   return (
     <div className="portfolio-page">
@@ -408,6 +591,12 @@ function Home() {
               Building the <em>room around the work.</em>
             </h2>
           </div>
+          <div className="development-heading development-heading--first">
+            <p className="section-kicker">Leadership & Organizations</p>
+            <p className="development-intro">
+              The communities I&apos;ve helped lead, represent, and grow.
+            </p>
+          </div>
           <div className="experience-list">
             {leadership.map((item, index) => (
               <article className="experience-row" key={item.organization} data-testid={`row-leadership-${index + 1}`}>
@@ -421,6 +610,23 @@ function Home() {
               </article>
             ))}
           </div>
+          <div className="development-heading">
+            <p className="section-kicker">Professional Development Programs</p>
+            <p className="development-intro">
+              Structured programs, fellowships, and selective opportunities designed to help me grow.
+            </p>
+          </div>
+          {renderDevelopmentGrid(
+            professionalDevelopmentPrograms,
+            'Professional development programs',
+          )}
+          <div className="development-heading">
+            <p className="section-kicker">Conferences & Summits</p>
+            <p className="development-intro">
+              Rooms where I&apos;ve learned, networked, and found new ways into the work.
+            </p>
+          </div>
+          {renderDevelopmentGrid(conferences, 'Conferences and summits')}
         </section>
 
         <section className="section" id="writing" aria-labelledby="writing-title">
