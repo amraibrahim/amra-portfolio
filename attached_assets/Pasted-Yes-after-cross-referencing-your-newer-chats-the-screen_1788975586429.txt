@@ -1,0 +1,381 @@
+Yes — after cross-referencing your newer chats, the screenshots, and the resume/materials you’ve uploaded, there **is** both missing information and some stale/inconsistent information. Some of that came from older versions of your résumé, so I would not keep editing the site piecemeal. I’d first establish one **portfolio source of truth**.
+
+## 1. Education — this needs correcting
+
+Your current program is:
+
+**Virginia Commonwealth University**
+**Bachelor of Arts in Computer Science**
+**Minor in Artificial Intelligence**
+**Senior · Expected Spring/May 2027**
+
+Your latest VCU degree audit shows the **Computer Science Bachelor of Arts** program, not the older Computer Science Bachelor of Science / Software Engineering concentration that still appears in several older résumé files. 
+
+So anywhere on the portfolio that implies you are still in the Bachelor of Science Software Engineering concentration should be changed.
+
+For your landing page, I’d simply say:
+
+> **Computer science student at Virginia Commonwealth University, graduating in 2027.**
+
+Then you can spell out the Bachelor of Arts + Artificial Intelligence minor on a résumé/recruiter page.
+
+---
+
+# 2. Your Experience section is incomplete
+
+Right now I see essentially:
+
+* LinkedIn
+* Leidos
+* Dell Technologies
+
+Those are your three strongest technical internships, so they absolutely belong there. But if the heading is **“The places, teams, and chapters.”**, you have more experience than that.
+
+### Core technical experience
+
+**LinkedIn — Software Engineer Intern**
+May–August 2026
+**Azure Platform**
+
+Your actual project was much more specific than the generic description currently on the page: you built a **Developer Sentiment Survey System**, unified four internal Azure data sources, created a read-only data-access layer, implemented failure isolation, storage, targeting logic, and Slack-based survey delivery.
+
+**Important:** one of your older résumé files says **San Francisco**, while your later internship details place you at **Sunnyvale HQ**. 
+Your portfolio should use the newer Sunnyvale information rather than carrying forward the stale résumé location.
+
+**Leidos — AI/ML Software Engineer Intern**
+February–May 2026
+
+Your current card should not just say something vague like “enterprise AI insight workflows.” You worked in a cleared defense environment supporting Navy IT operations, including multi-agent/AI workflows, enterprise datasets, dashboards, and internal tooling. A recent CV also describes the work as AI workflows and enterprise insight pipelines supporting Navy IT. 
+
+Also: in the screenshot it looks like the organization/team label may say something like **“Leidos - 3MIT.”** That should be checked. The project/context you've consistently discussed is **SMIT / Navy–Marine Corps Intranet**.
+
+**Dell Technologies — Software Engineer Intern**
+May–August 2025
+
+Your Dell project should explicitly reflect:
+
+> Real-time log / server telemetry intelligence using retrieval-augmented generation, Kafka, telemetry data, and engineering-ticket correlation.
+
+Your older résumé confirms the RAG, Kafka, telemetry, ETL, and enterprise log work. 
+
+### Missing employment
+
+You’ve also had:
+
+**VCU Technology — 2024**
+
+and now:
+
+**VCU RAMS Connect — Fall 2026–Present**
+
+I would **not** give these the same visual weight as LinkedIn/Leidos/Dell. Put them under a small:
+
+> **Campus & Earlier Experience**
+
+row beneath your main internships.
+
+---
+
+# 3. Selected Work is missing one of your strongest accomplishments
+
+Your current four appear to be:
+
+1. Developer Sentiment Survey System
+2. Enterprise AI Insight Workflows
+3. Real-Time Server Telemetry Intelligence
+4. Local Drink Finder
+
+Those are good.
+
+But you're missing:
+
+### JPMorgan Chase Data for Good Hackathon
+
+**1st Place — Machine Learning & Social Impact**
+
+This is arguably stronger portfolio material than Local Drink Finder because there is a complete story:
+
+* real nonprofit stakeholder
+* real dataset
+* machine-learning model
+* feature engineering / exploratory analysis
+* recommendations
+* presentation
+* **first-place result**
+
+Your résumé confirms the project and award. 
+
+I would therefore use **five** selected projects rather than four.
+
+You also have an older **Full-Stack Finance Tracker** project.  I wouldn't prioritize it on the homepage anymore because the internship and Data for Good work are stronger.
+
+One newer CV also lists **NAFS**, an AI mobile app published on the App Store.  I would **verify that entry before we add it**, because it does not show up consistently across your other portfolio/resume history.
+
+---
+
+# 4. Leadership — mostly right, but titles need a consistency pass
+
+The five organizations you're showing are appropriate:
+
+### ColorStack at Virginia Commonwealth University
+
+Your materials conflict between:
+
+> **Founder & President**
+
+and
+
+> **Founder & Co-President**
+
+One résumé says Founder & President. 
+A newer CV says Founder & Co-President. 
+
+Based on your newer chats, **Founder & Co-President** appears to be the more current title, so I would use that consistently.
+
+### Black Muslim Collective
+
+**President · June 2024–Present**
+
+This section should say more than generic “community leadership.” You have actually led an executive board and organized cultural, religious, service, and collaborative campus programming.
+
+### National Society of Black Engineers
+
+**Technical Outreach and Community Help Chair**
+
+Spell the role out. No “TORCH Chair” on the visible site.
+
+### Virginia Commonwealth University College of Engineering
+
+**Student Ambassador**
+
+Keep.
+
+### Amazon Web Services
+
+This is one where I want to be more careful. Across our materials it has been referred to in slightly different ways as an AWS Student Ambassador / campus or Skill Builder ambassador role.
+
+So **do not publish a made-up standardized title yet**. Use the exact official title from the acceptance/program documentation.
+
+---
+
+# 5. Professional Development has more nuance than the current grid shows
+
+You currently appear to have cards for roughly:
+
+* Management Leadership for Tomorrow
+* Break Through Tech
+* Sponsors for Educational Opportunity
+* Walmart
+* Accenture
+* Visa
+* Citi
+* Capital One
+* Amazon Web Services
+* National Retail Federation Foundation
+
+That's a good starting list, but right now the cards lose the **actual opportunity**.
+
+For example, don't display:
+
+> MLT
+
+Display:
+
+> **Management Leadership for Tomorrow**
+> Career Preparation Fellow
+
+You are in an intensive 18-month Career Preparation program; that is much more meaningful than just the organization name. Your résumé documents the fellowship beginning January 2025. 
+
+Likewise:
+
+**Break Through Tech**
+Artificial Intelligence and Machine Learning Fellow
+
+**Sponsors for Educational Opportunity**
+Tech Developer Residency Fellow
+June–August 2025
+**300+ hours of technical training** 
+
+**Walmart**
+Sophomore Discovery Summit
+
+**Accenture**
+Student Leadership Program
+
+**Visa**
+Upskill Tech Pathway
+
+**Citi**
+Freshman Discovery Program
+
+**Capital One**
+First Generation Focus
+
+But there is another Capital One experience that seems missing entirely:
+
+### Capital One Software Engineering Summit + Hackathon
+
+May 2024
+
+An older resume records both the engineering summit and a 24-hour fintech hackathon. 
+
+That should not automatically be collapsed into First Generation Focus if they were separate experiences.
+
+You also have:
+
+**Amazon Web Services Spring Cloud Cohort**
+
+and
+
+**National Retail Federation Foundation Student Program**
+**Ray Greenly Scholarship**
+
+Those distinctions should appear on hover rather than simply showing the company/organization.
+
+---
+
+# 6. Conferences & Summits needs clearer status labels
+
+Your screenshot currently has:
+
+* GHC
+* AFRO
+* CS
+* MLT
+* D
+* DEEP
+
+That is way too compressed, especially since you already told me **no acronyms**.
+
+The actual content should be something closer to:
+
+**Grace Hopper Celebration 2025**
+Kamala Scholar
+
+**AFROTECH Conference**
+
+**ColorStack Stacked Up Summit**
+
+**Management Leadership for Tomorrow Tech Trek**
+
+**Management Leadership for Tomorrow Summer Seminar**
+Deloitte University
+
+**DEEPenn STEM Graduate School Preview**
+University of Pennsylvania
+**Selected Participant · October 2026**
+
+That last distinction matters. DEEPenn hasn't happened yet; you're selected and have travel/program arrangements for the graduate-school preview. The program documentation identifies it specifically as a **Graduate School Preview**. 
+
+So don't present it as though it were already completed.
+
+---
+
+# 7. You're missing an Awards / Recognition layer
+
+I wouldn't necessarily create a giant new numbered section. But your portfolio currently hides some very good distinctions.
+
+I'd add a small editorial strip somewhere around Selected Work / Professional Development:
+
+### Recognition
+
+**1st Place**
+JPMorgan Chase Data for Good Hackathon
+
+**Kamala Scholar**
+Grace Hopper Celebration
+
+**Ray Greenly Scholarship Recipient**
+National Retail Federation Foundation Student Program
+
+These tell me much more than another generic organization logo.
+
+---
+
+# 8. You're also missing communities/affiliations
+
+Your older résumé has:
+
+* INROADS
+* Rewriting the Code
+* ColorStack
+* Black Muslim Collective
+
+along with several development programs. 
+
+But I would **not** force INROADS and Rewriting the Code into “Professional Development Programs” unless there is a specific program/title associated with them.
+
+Instead, at the bottom of 04:
+
+> **Communities & Affiliations**
+> INROADS · Rewriting the Code · ColorStack
+
+Very small. No giant cards necessary.
+
+---
+
+# 9. The About section currently undersells you
+
+The site currently seems to reduce you to something like:
+
+> AI + systems + useful tools.
+
+But your story has several threads:
+
+**Student**
+
+* Computer Science
+* Artificial Intelligence minor
+* Senior
+* graduating 2027
+
+**Technical**
+
+* artificial intelligence / machine learning
+* platform engineering
+* developer tooling
+* distributed/data systems
+
+**Professional**
+
+* LinkedIn
+* Leidos
+* Dell Technologies
+
+**Community**
+
+* ColorStack
+* Black Muslim Collective
+* engineering ambassador work
+
+**Next**
+
+* new-grad software engineering
+* graduate study eventually in Computer Science / Artificial Intelligence
+* planned Spring 2027 study abroad
+
+That is why your new notebook headline is better:
+
+> **Notes from what I’m**
+> *building, learning, and up to.*
+
+Your About copy should support **all of that**, rather than trying to brand you as an engineer already.
+
+---
+
+## The corrected portfolio inventory I would work from
+
+| Area                         | Content that should be represented                                                                                                                                                                                                                               |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Education**                | Virginia Commonwealth University · Bachelor of Arts in Computer Science · Artificial Intelligence minor · Senior · 2027                                                                                                                                          |
+| **Experience**               | LinkedIn · Leidos · Dell Technologies                                                                                                                                                                                                                            |
+| **Campus / Earlier Work**    | VCU Technology · VCU RAMS Connect                                                                                                                                                                                                                                |
+| **Selected Work**            | Developer Sentiment Survey System · Enterprise AI Workflows · Server Telemetry Intelligence · JPMorgan Chase Data for Good · Local Drink Finder                                                                                                                  |
+| **Leadership**               | ColorStack · Black Muslim Collective · National Society of Black Engineers · VCU Engineering Ambassador · Amazon Web Services ambassador role                                                                                                                    |
+| **Professional Development** | Management Leadership for Tomorrow Career Prep · Break Through Tech · Sponsors for Educational Opportunity Tech Developer Residency · Walmart · Accenture · Visa · Citi · Capital One · Amazon Web Services Cloud Cohort · National Retail Federation Foundation |
+| **Conferences / Summits**    | Grace Hopper Celebration · AFROTECH · ColorStack Stacked Up · Management Leadership for Tomorrow Tech Trek · Management Leadership for Tomorrow Summer Seminar at Deloitte University · DEEPenn STEM                                                             |
+| **Recognition**              | JPMorgan Chase Data for Good 1st Place · Kamala Scholar · Ray Greenly Scholarship                                                                                                                                                                                |
+| **Communities**              | INROADS · Rewriting the Code                                                                                                                                                                                                                                     |
+| **Current / Next**           | Senior year · new-grad search · Spring 2027 study-abroad plan                                                                                                                                                                                                    |
+
+So yes: **I would stop changing individual sentences for a moment.** The next useful step is for me to make you a **complete master content sheet for every section of the portfolio**, with the correct dates, titles, 1–2 sentence descriptions, hover captions, and what should/shouldn't appear publicly. Then you can feed that to Replit in one pass instead of fixing inaccuracies one card at a time.
