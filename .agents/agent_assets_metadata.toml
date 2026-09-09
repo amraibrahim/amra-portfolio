@@ -1,0 +1,16 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "cBG5QFIiBOeyuG6XrY3n7"
+uri = "file://artifacts/personal-portfolio/CONTENT_SOURCE_OF_TRUTH.md"
+type = "text"
+title = "Amra Ibrahim Portfolio Content Source of Truth"
+description = "Master content plan for the portfolio, including public copy, section placement, opportunity distinctions, and verification checkpoints before the next implementation pass."
+logical_id = "98259910-2e30-40b7-b170-ed836140f2fe"
+content_hash = "sha256:f90e3d18baf25f206e3e7be02eab5ddf52bddd5f3f8afcd3691f772e7d295f5f"
+size = 14869
+mtime_ms = 1788975820375
+storage_uri = "gcs://replit-rams-assets-worf/rams/assets/repl:aa6fe514-b015-4c52-82a7-163ce95701e0/98259910-2e30-40b7-b170-ed836140f2fe/67993d8d-bb20-433b-92b2-5c10d1f0289e"
+storage_version_token = "1788975841257054"
+content_type = "text/markdown"
