@@ -24,7 +24,7 @@ import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 const queryClient = new QueryClient();
 const linkedinUrl = 'https://www.linkedin.com/in/amraibrahimr/';
 const emailAddress = 'ibrahimar2@vcu.edu';
-const sectionIds = ['about', 'work', 'experience', 'leadership', 'writing', 'contact'];
+const sectionIds = ['about', 'work', 'experience', 'leadership', 'writing', 'recruiters'];
 
 const projects = [
   {
@@ -389,7 +389,9 @@ function Home() {
                 {id === 'work'
                   ? 'Selected work'
                   : id === 'leadership'
-                    ? 'Leadership & Professional Development'
+                    ? 'Leadership'
+                    : id === 'recruiters'
+                      ? 'For recruiters'
                     : id}
               </a>
             ))}
@@ -431,7 +433,9 @@ function Home() {
                 {id === 'work'
                   ? 'Selected work'
                   : id === 'leadership'
-                    ? 'Leadership & Professional Development'
+                    ? 'Leadership'
+                    : id === 'recruiters'
+                      ? 'For recruiters'
                     : id}
               </a>
             ))}
@@ -442,20 +446,25 @@ function Home() {
       <main className="site-main" id="top">
         <section className="hero" aria-labelledby="hero-title">
           <div>
-            <p className="eyebrow reveal" data-testid="text-hero-eyebrow">
-              Software engineer / AI builder · Richmond, VA
+            <p className="status-line reveal" data-testid="text-hero-status">
+              <span className="status-mark" aria-hidden="true">
+                ■
+              </span>
+              Open to full-time software engineering and AI/ML opportunities
             </p>
             <h1 className="hero-title reveal reveal-delay-1" id="hero-title" data-testid="text-hero-title">
               I make complex systems <em>feel</em> useful.</h1>
             <p className="hero-dek reveal reveal-delay-2" data-testid="text-hero-description">
-              I&apos;m Amra Ibrahim — a <strong>software engineer building with AI, data, and thoughtful systems</strong> that
-              turn difficult problems into clearer decisions.
+              I&apos;m Amra Ibrahim, a computer science student and software engineer interested in the systems behind
+              useful AI. I&apos;ve worked across developer platforms, AI/ML systems, and infrastructure at LinkedIn,
+              Leidos, and Dell, and I&apos;m especially interested in the point where complex technology becomes
+              something people can actually use.
             </p>
             <div className="hero-ctas reveal reveal-delay-3">
               <a className="button" href="#work" data-testid="link-hero-work">
                 See selected work <ArrowRight size={15} strokeWidth={1.7} />
               </a>
-              <a className="button secondary" href="#contact" data-testid="link-hero-contact">
+              <a className="button secondary" href="#recruiters" data-testid="link-hero-contact">
                 Start a conversation
               </a>
             </div>
@@ -663,16 +672,16 @@ function Home() {
           </div>
         </section>
 
-        <section className="section contact-section" id="contact" aria-labelledby="contact-title">
+        <section className="section contact-section" id="recruiters" aria-labelledby="contact-title">
           <div className="contact-panel">
             <div>
-              <p className="section-kicker">06 / Contact</p>
+              <p className="section-kicker">06 / For Recruiters</p>
               <h2 className="contact-title" id="contact-title" data-testid="text-contact-title">
-                Have a good question?
+                A clear case for working together.
               </h2>
               <p className="contact-subtitle" data-testid="text-contact-description">
-                Tell me what you&apos;re trying to make, untangle, or understand. The best place to
-                reach me is LinkedIn.
+                I&apos;m currently open to full-time software engineering and AI/ML opportunities. My strongest fit is
+                at the intersection of developer platforms, applied AI, data systems, and infrastructure.
               </p>
             </div>
             <div className="contact-links">
