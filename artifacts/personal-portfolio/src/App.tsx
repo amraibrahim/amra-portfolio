@@ -3,12 +3,10 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import {
   ArrowRight,
   ArrowUpRight,
-  Check,
-  Copy,
   ExternalLink,
+  Github,
   Linkedin,
   Mail,
-  MapPin,
   Menu,
   Moon,
   Rss,
@@ -23,108 +21,103 @@ import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 
 const queryClient = new QueryClient();
 const linkedinUrl = 'https://www.linkedin.com/in/amraibrahimr/';
+const githubUrl = 'https://github.com/amraibrahim';
 const emailAddress = 'ibrahimar2@vcu.edu';
-const sectionIds = ['about', 'work', 'experience', 'leadership', 'writing', 'recruiters'];
+const resumeUrl = '/resume.pdf';
+const sectionIds = ['about', 'experience', 'work', 'leadership', 'recruiters', 'resume'] as const;
+const sectionLabels = { about: 'About', work: 'Projects', experience: 'Experience', leadership: 'Leadership', recruiters: 'For Recruiters', resume: 'Resume' };
 
 const projects = [
   {
-    year: '2026',
-    name: 'Developer sentiment survey system',
-    type: 'Platform engineering',
-    summary:
-      'An end-to-end Azure developer sentiment system connecting internal tooling and telemetry through a resilient ports-and-adapters architecture.',
-    href: linkedinUrl,
+    year: '05/2026 - 08/2026', name: 'Developer Sentiment Survey System', context: 'LinkedIn · Azure Platform', type: 'Platform engineering',
+    summary: 'Built a developer sentiment survey system that brought together data from four internal Azure sources to identify developers to survey and better understand their experience with internal platforms.',
+    detail: 'I built a secure, read-only data-access layer, designed persistence for the system’s owned data, isolated failures across external sources, and implemented targeting logic that accounted for survey fatigue. Surveys were delivered through Slack with safeguards for non-production environments.',
+    tools: 'Python · SQLAlchemy · Slack · Azure · data-access layers · system integration',
+    recognition: '', href: 'https://lnkd.in/p/eabRjwVK',
   },
   {
-    year: '2026',
-    name: 'Enterprise AI insight workflows',
-    type: 'AI / ML engineering',
-    summary:
-      'Multi-agent workflows for service-desk, network, and performance data, with vector search and enterprise API integrations for operational insight.',
-    href: linkedinUrl,
+    year: '2026', name: 'Enterprise Artificial Intelligence Insight Workflows', context: 'Leidos', type: 'Artificial intelligence / machine learning engineering',
+    summary: 'Worked in a cleared defense environment supporting U.S. Navy information technology operations, building applied artificial intelligence workflows around information distributed across enterprise tools and datasets.',
+    detail: 'The work included multi-agent workflows, enterprise insight pipelines, dashboards, and internal tooling designed to make complex operational information easier to work with.',
+    tools: 'Python · enterprise application programming interfaces · vector databases · dashboards · artificial intelligence workflows',
+    recognition: '', href: linkedinUrl,
   },
   {
-    year: '2025',
-    name: 'Real-time server telemetry intelligence',
-    type: 'RAG / data systems',
-    summary:
-      'A Kafka-connected RAG pipeline for Dell server telemetry and support logs that processed 14K+ entries and cut inference latency by 75%.',
-    href: linkedinUrl,
+    year: '05/2025 - 08/2025', name: 'Real-Time Server Telemetry Intelligence', context: 'Dell Technologies', type: 'Retrieval + data systems',
+    summary: 'Built pipelines for making server telemetry and support logs easier to investigate.',
+    detail: 'The project used retrieval-augmented generation, Kafka, extract-transform-load workflows, and engineering-ticket correlation to connect server alerts with relevant troubleshooting context. It was also my first internship working deeply with retrieval systems, streaming data, and large enterprise datasets.',
+    tools: 'Python · Pandas · Kafka · LangChain · ChromaDB · retrieval systems · telemetry',
+    recognition: '', href: linkedinUrl,
   },
   {
-    year: '2025',
-    name: 'Local Drink Finder',
-    type: 'Applied AI',
-    summary:
-      'An AI-powered café and boba matcher using natural-language search, sentence transformers, and LLMs to surface culturally specific drinks.',
-    href: linkedinUrl,
+    year: '10/2025', name: 'JPMorgan Chase Data for Good Hackathon', context: '', type: 'Machine learning / social impact',
+    summary: 'Worked with a nonprofit stakeholder and real-world program data to better understand factors affecting employment outcomes.',
+    detail: 'Our team used exploratory analysis, feature engineering, modeling, and data storytelling to turn patterns in the data into recommendations that could be presented back to the organization.',
+    tools: 'Python · Pandas · NumPy · scikit-learn · logistic regression · data storytelling',
+    recognition: '1st Place: Machine Learning & Social Impact', href: 'https://lnkd.in/p/eWW4ZQfG',
+  },
+  {
+    year: '01/2026', name: 'NAFS', context: 'Founding Team · Mobile Product', type: 'Mobile product',
+    summary: 'Part of the founding team behind NAFS, a privacy-first Muslim companion app designed to bring prayer tracking, Quran reading, dhikr, fasting, reflections, and journaling into one place.',
+    detail: 'I helped take the product from an early idea to a launched application available on iOS, focusing on product direction and helping turn an early concept into a usable, privacy-first experience centered on daily spiritual practice.',
+    tools: 'Product strategy · user experience · privacy-first design · product iteration · product launch',
+    recognition: '', href: 'https://nafs.fyi/',
   },
 ];
 
 const experiences = [
   {
-    date: 'May — Aug 2026',
-    organization: 'LinkedIn',
-    role: 'Software Engineer Intern',
-    detail:
-      'Built a secure, read-only data layer and MySQL persistence system for an Azure developer sentiment survey, plus a Slack Block Kit bot with fatigue controls and no inbound ingress.',
+    date: 'May–August 2026', organization: 'LinkedIn', role: 'Software Engineer Intern',
+    website: 'https://www.linkedin.com/', logoUrl: 'https://www.google.com/s2/favicons?domain=linkedin.com&sz=128',
+    context: 'Azure Platform · Sunnyvale, California',
+    detail: 'Built the Developer Sentiment Survey System, connecting four internal Azure data sources and developing the data-access, persistence, failure-isolation, targeting, and Slack survey-delivery pieces behind the system. The project pushed me to work across systems owned by different teams, learn unfamiliar infrastructure, and make technical decisions even when I did not always have the full picture.',
   },
   {
-    date: 'Feb — May 2026',
-    organization: 'Leidos · SMIT',
-    role: 'AI/ML Software Engineer Intern',
-    detail:
-      'Designed multi-agent AI orchestration workflows and applied-AI insight pipelines across Jira, Splunk, ServiceNow, Ask Sage, and Azure Data.',
+    date: 'February–May 2026', organization: 'Leidos', role: 'Artificial Intelligence / Machine Learning Software Engineer Intern', context: 'U.S. Navy information technology operations · cleared defense environment',
+    website: 'https://www.leidos.com/', logoUrl: 'https://www.google.com/s2/favicons?domain=leidos.com&sz=128',
+    detail: 'Worked on applied artificial intelligence, enterprise insight pipelines, dashboards, and internal tooling supporting U.S. Navy information technology operations in a cleared defense environment.',
   },
   {
-    date: 'May — Aug 2025',
-    organization: 'Dell Technologies',
-    role: 'Software Engineer Intern',
-    detail:
-      'Built a RAG and Kafka pipeline for server telemetry and support logs, cleaning 14K+ entries with Python, Pandas, FAISS, and ChromaDB.',
+    date: 'May–August 2025', organization: 'Dell Technologies', role: 'Software Engineer Intern', context: '',
+    website: 'https://www.dell.com/', logoUrl: 'https://www.google.com/s2/favicons?domain=dell.com&sz=128',
+    detail: 'Built retrieval and real-time data pipelines around PowerEdge server telemetry, logs, and engineering tickets to surface useful troubleshooting context. This is where I first started working deeply with retrieval-augmented generation, Kafka, enterprise telemetry, and machine-learning infrastructure.',
   },
 ];
 
 const leadership = [
   {
-    date: 'Aug 2025 — now',
+    date: 'August 2025 - Present',
     organization: 'ColorStack at Virginia Commonwealth University',
-    role: 'Founder & President',
+    role: 'Founder & Co-President',
     detail:
-      'Founded VCU’s first ColorStack chapter and built a community around technical growth, career development, partnerships, and belonging in computer science.',
+      'Founded Virginia Commonwealth University’s first ColorStack chapter and helped turn it into a community around technical growth, career development, partnerships, and belonging in computer science. The work includes coordinating people, programs, and partnerships so students have a place to learn, connect, and keep showing up.',
   },
   {
-    date: 'Leadership',
+    date: 'June 2024 - Present',
     organization: 'Black Muslim Collective at Virginia Commonwealth University',
     role: 'President',
     detail:
-      'Led a student community focused on belonging, connection, and support across campus.',
+      'Lead an executive board and organize cultural, religious, service, and collaborative programming across campus. A lot of this role is about the work people do not always see: coordinating schedules, partnerships, budgets, communication, and all the small details that turn an idea into something people can actually show up for.',
   },
   {
-    date: 'Leadership',
+    date: 'August 2025 - Present',
+    organization: 'Virginia Commonwealth University College of Engineering',
+    role: 'Student Ambassador',
+    detail:
+      'Represent the College of Engineering and help prospective students connect with the engineering community and student experience.',
+  },
+  {
+    date: 'April 2024 - April 2025',
     organization: 'National Society of Black Engineers at Virginia Commonwealth University',
     role: 'Technical Outreach and Community Help Chair',
     detail:
       'Supported technical outreach and community-building initiatives for engineering students.',
   },
-  {
-    date: 'Leadership',
-    organization: 'Virginia Commonwealth University College of Engineering',
-    role: 'Student Ambassador',
-    detail:
-      'Represented the College of Engineering and helped prospective students connect with the VCU engineering community.',
-  },
-  {
-    date: 'Leadership',
-    organization: 'Amazon Web Services',
-    role: 'Student Ambassador',
-    detail:
-      'Connected students with cloud learning, technical resources, and opportunities to explore careers in technology.',
-  },
 ];
 
 type DevelopmentOpportunity = {
   logo: string;
+  logoUrl?: string;
   organization: string;
   title: string;
   distinction?: string;
@@ -134,141 +127,170 @@ type DevelopmentOpportunity = {
 const professionalDevelopmentPrograms: DevelopmentOpportunity[] = [
   {
     logo: 'MLT',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=mlt.org&sz=128',
     organization: 'Management Leadership for Tomorrow',
     title: 'Career Preparation Program',
-    caption: 'Career preparation and professional development',
+    distinction: 'Career Preparation Fellow · January 2025–Present',
+    caption: 'Intensive career-preparation program',
   },
   {
     logo: 'BTT',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=breakthroughtech.org&sz=128',
     organization: 'Break Through Tech',
-    title: 'Artificial Intelligence and Machine Learning Fellowship',
-    caption: 'Applied AI/ML development and career support',
+    title: 'Artificial Intelligence Program',
+    distinction: 'Artificial Intelligence Program Fellow',
+    caption: 'Applied artificial intelligence and machine learning development and career support',
   },
   {
     logo: 'SEO',
-    organization: 'SEO',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=seo-usa.org&sz=128',
+    organization: 'Sponsors for Educational Opportunity',
     title: 'Tech Developer Residency',
-    caption: 'Technical training and early-career development',
+    distinction: 'Tech Developer Residency Fellow · June–August 2025',
+    caption: '300+ hours of computer science and software-engineering training',
   },
   {
     logo: 'W',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=walmart.com&sz=128',
     organization: 'Walmart',
     title: 'Sophomore Discovery Summit',
-    caption: 'Selected for Walmart’s early-career development program',
+    caption: 'Early-career development opportunity',
   },
   {
     logo: 'ACN',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=accenture.com&sz=128',
     organization: 'Accenture',
     title: 'Student Leadership Program',
     caption: 'Leadership and technology career development',
   },
   {
     logo: 'V',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=visa.com&sz=128',
     organization: 'Visa',
     title: 'Upskill Tech Pathway',
     caption: 'Technical and professional development program',
   },
   {
     logo: 'CITI',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=citi.com&sz=128',
     organization: 'Citi',
     title: 'Freshman Discovery Program',
     caption: 'Early-career technology and financial-services exposure',
   },
   {
     logo: 'C1',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=capitalone.com&sz=128',
     organization: 'Capital One',
     title: 'First Generation Focus',
     caption: 'Professional development for first-generation students',
   },
   {
+    logo: 'C1',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=capitalone.com&sz=128',
+    organization: 'Capital One',
+    title: 'Software Engineering Summit + Hackathon',
+    distinction: 'May 2024',
+    caption: '24-hour fintech hackathon',
+  },
+  {
     logo: 'AWS',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=128',
+    organization: 'Amazon Web Services',
+    title: 'Student Ambassador',
+    distinction: '2026–Present',
+    caption: 'Cloud learning and technical career development',
+  },
+  {
+    logo: 'AWS',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=128',
     organization: 'Amazon Web Services',
     title: 'Spring Cloud Cohort',
     caption: 'Cloud learning and technical community',
-  },
-  {
-    logo: 'NRF',
-    organization: 'NRF Foundation',
-    title: 'Student Program',
-    distinction: 'Ray Greenly Scholarship Recipient',
-    caption: 'Student development and scholarship community',
   },
 ];
 
 const conferences: DevelopmentOpportunity[] = [
   {
+    logo: 'NSBE',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=nsbe.org&sz=128',
+    organization: 'National Society of Black Engineers',
+    title: 'National Convention',
+    distinction: 'Attendee · 2024 & 2025',
+    caption: 'Attended the National Convention in 2024 and 2025',
+  },
+  {
+    logo: 'NRF',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=nrffoundation.org&sz=128',
+    organization: 'National Retail Federation Foundation',
+    title: 'Student Program',
+    distinction: 'Ray Greenly Scholarship Recipient',
+    caption: 'Student development and scholarship community',
+  },
+  {
     logo: 'GHC',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=ghc.anitab.org&sz=128',
     organization: 'Grace Hopper Celebration',
     title: 'Grace Hopper Celebration',
     distinction: 'Kamala Scholar',
-    caption: 'Conference experience in Chicago',
+    caption: 'Grace Hopper Celebration 2025',
   },
   {
     logo: 'AFRO',
-    organization: 'AfroTech',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=afrotech.com&sz=128',
+    organization: 'AFROTECH',
     title: 'AFROTECH Conference',
     caption: 'Technology, innovation, and career community',
   },
   {
     logo: 'CS',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=colorstack.org&sz=128',
     organization: 'ColorStack',
     title: 'Stacked Up Summit',
     caption: 'ColorStack technology and career summit',
   },
   {
     logo: 'MLT',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=mlt.org&sz=128',
     organization: 'Management Leadership for Tomorrow',
     title: 'Tech Trek',
     caption: 'Technology industry exposure and networking',
   },
   {
     logo: 'D',
-    organization: 'Deloitte University',
-    title: 'Summer Seminar',
-    caption: 'Management Leadership for Tomorrow seminar',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=mlt.org&sz=128',
+    organization: 'Management Leadership for Tomorrow',
+    title: 'Summer Seminar at Deloitte University',
+    caption: 'Summer Seminar at Deloitte University',
   },
   {
-    logo: 'DEEP',
-    organization: 'University of Pennsylvania',
+    logo: 'DEEP', logoUrl: 'https://www.google.com/s2/favicons?domain=upenn.edu&sz=128', organization: 'University of Pennsylvania',
     title: 'DEEPenn STEM Graduate School Preview',
-    caption: 'Graduate school exploration for STEM students',
+    distinction: 'Selected Participant · October 9–11, 2026',
+    caption: 'Upcoming graduate-school preview',
   },
 ];
 
-const writing = [
+const affiliations: DevelopmentOpportunity[] = [
   {
-    date: 'LinkedIn · Featured',
-    title: 'Featured LinkedIn post',
-    excerpt: 'A recent piece of writing from Amra Ibrahim, shared on LinkedIn.',
-    href: 'https://lnkd.in/p/ei6a_Y3f',
+    logo: 'INR',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=inroads.org&sz=128',
+    organization: 'INROADS',
+    title: 'Professional community',
+    caption: 'Career development and leadership community',
   },
   {
-    date: 'Focus · AI systems',
-    title: 'Building AI that earns trust',
-    excerpt:
-      'Exploring the space between impressive demos and dependable systems: retrieval, orchestration, guardrails, and useful explanations.',
-    href: linkedinUrl,
+    logo: 'RTC',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=rewritingthecode.org&sz=128',
+    organization: 'Rewriting the Code',
+    title: 'Technical community',
+    caption: 'Community for women and non-binary technologists',
   },
   {
-    date: 'Focus · Data',
-    title: 'From raw logs to useful signals',
-    excerpt:
-      'Working with telemetry, support data, and vector search to help technical teams see the pattern inside the noise.',
-    href: linkedinUrl,
-  },
-  {
-    date: 'Focus · Community',
-    title: 'Community is infrastructure',
-    excerpt:
-      'Why creating access, mentorship, and room to grow is part of building a stronger technical future.',
-    href: linkedinUrl,
-  },
-  {
-    date: 'Focus · Product',
-    title: 'Make the hard thing legible',
-    excerpt:
-      'A product is doing its job when complexity becomes a clear next step for the person using it.',
-    href: linkedinUrl,
+    logo: 'CS',
+    logoUrl: 'https://www.google.com/s2/favicons?domain=colorstack.org&sz=128',
+    organization: 'ColorStack',
+    title: 'Technical community',
+    caption: 'National community supporting Black and Latinx students in technology',
   },
 ];
 
@@ -276,7 +298,6 @@ function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
-  const [copied, setCopied] = useState(false);
   const [openOpportunity, setOpenOpportunity] = useState<string | null>(null);
 
   useEffect(() => {
@@ -308,21 +329,6 @@ function Home() {
 
   const toggleTheme = () => setDarkMode((current) => !current);
 
-  const copyProfileLink = async () => {
-    try {
-      await navigator.clipboard.writeText(linkedinUrl);
-    } catch {
-      const textArea = document.createElement('textarea');
-      textArea.value = linkedinUrl;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      textArea.remove();
-    }
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 2200);
-  };
-
   const closeMenu = () => setMenuOpen(false);
 
   const renderDevelopmentGrid = (
@@ -339,6 +345,7 @@ function Home() {
             type="button"
             key={opportunity.title}
             aria-expanded={isOpen}
+            aria-label={`${opportunity.organization}: ${opportunity.title}${opportunity.distinction ? `. ${opportunity.distinction}` : ''}. ${opportunity.caption}`}
             onClick={() =>
               setOpenOpportunity((current) =>
                 current === opportunity.title ? null : opportunity.title,
@@ -347,9 +354,17 @@ function Home() {
             data-testid={`card-development-${testId}`}
           >
             <span className="development-logo-lockup" aria-hidden="true">
+              {opportunity.logoUrl ? (
+                <img
+                  className="development-logo-image"
+                  src={opportunity.logoUrl}
+                  alt=""
+                />
+              ) : (
               <span className="development-logo">
                 {opportunity.logo}
               </span>
+              )}
               <span className="development-organization">
                 {opportunity.organization}
               </span>
@@ -372,9 +387,7 @@ function Home() {
       <header className="site-header">
         <div className="header-inner">
           <a className="wordmark" href="#top" onClick={closeMenu} data-testid="link-home">
-            <span className="wordmark-mark" aria-hidden="true">
-              I
-            </span>
+            <span className="wordmark-mark" aria-hidden="true" />
             <span>amra ibrahim / notebook</span>
           </a>
 
@@ -386,13 +399,7 @@ function Home() {
                 key={id}
                 data-testid={`link-nav-${id}`}
               >
-                {id === 'work'
-                  ? 'Selected work'
-                  : id === 'leadership'
-                    ? 'Leadership'
-                    : id === 'recruiters'
-                      ? 'For recruiters'
-                    : id}
+                {sectionLabels[id]}
               </a>
             ))}
           </nav>
@@ -430,13 +437,7 @@ function Home() {
                 onClick={closeMenu}
                 data-testid={`link-mobile-nav-${id}`}
               >
-                {id === 'work'
-                  ? 'Selected work'
-                  : id === 'leadership'
-                    ? 'Leadership'
-                    : id === 'recruiters'
-                      ? 'For recruiters'
-                    : id}
+                {sectionLabels[id]}
               </a>
             ))}
           </nav>
@@ -450,92 +451,110 @@ function Home() {
               <span className="status-mark" aria-hidden="true">
                 ■
               </span>
-              Open to full-time software engineering and AI/ML opportunities
+              Open to 2027 engineering roles · Winter/Spring 2027 internships
             </p>
             <h1 className="hero-title reveal reveal-delay-1" id="hero-title" data-testid="text-hero-title">
-              I make complex systems <em>feel</em> useful.</h1>
+              Hi, I’m Amra.<br />
+              <span className="hero-title-note">Here’s what I’m <em>building.</em></span>
+            </h1>
             <p className="hero-dek reveal reveal-delay-2" data-testid="text-hero-description">
-              I&apos;m Amra Ibrahim, a computer science student and software engineer interested in the systems behind
-              useful AI. I&apos;ve worked across developer platforms, AI/ML systems, and infrastructure at LinkedIn,
-              Leidos, and Dell, and I&apos;m especially interested in the point where complex technology becomes
-              something people can actually use.
+              I’m a computer science senior at Virginia Commonwealth University, interested in AI,
+              distributed systems, and developer tools. This is where I share my projects and what
+              I’m learning along the way.
             </p>
             <div className="hero-ctas reveal reveal-delay-3">
               <a className="button" href="#work" data-testid="link-hero-work">
-                See selected work <ArrowRight size={15} strokeWidth={1.7} />
+                Explore projects <ArrowRight size={15} strokeWidth={1.7} />
               </a>
               <a className="button secondary" href="#recruiters" data-testid="link-hero-contact">
-                Start a conversation
+                Get in touch
               </a>
             </div>
+            <p className="hero-meta reveal reveal-delay-3">
+              Graduating May 2027 · Greater Washington, DC Area
+            </p>
           </div>
 
-          <aside className="hero-aside reveal reveal-delay-3" aria-label="Availability and location">
-            <p className="aside-note" data-testid="text-availability">
-              Currently
-              <strong>Building at the intersection of AI, data, and software.</strong>
-            </p>
-            <p className="aside-note" data-testid="text-location">
-              <MapPin size={13} strokeWidth={1.6} aria-hidden="true" /> Based in
-              <strong>Greater Washington, DC Area / UTC−05</strong>
-            </p>
-            <div className="scroll-prompt" aria-hidden="true">
-              <span />
-              Scroll to read
-            </div>
-          </aside>
         </section>
 
         <section className="section" id="about" aria-labelledby="about-title">
           <div className="section-heading">
-            <p className="section-kicker">01 / About</p>
+            <p className="section-kicker"><span className="section-number">01 /</span> About</p>
             <h2 className="section-title" id="about-title" data-testid="text-about-title">
-              Part builder, part <em>community builder.</em>
+              A little more <em>about me.</em>
             </h2>
           </div>
           <div className="about-layout">
-            <p className="about-lede" data-testid="text-about-lede">
-              I like the point where complex systems become useful tools for real people.
-            </p>
+            <figure className="about-portrait">
+              <img src={`${import.meta.env.BASE_URL}amra-headshot.jpg`} alt="Portrait of Amra Ibrahim" width={4984} height={4984} loading="lazy" decoding="async" />
+              <figcaption>Amra, outside the notebook.</figcaption>
+            </figure>
             <div className="about-copy" data-testid="text-about-story">
-              <p>
-                I&apos;m a software engineer interested in the systems behind useful AI: retrieval,
-                orchestration, telemetry, and data products that help teams make better decisions.
-                Across internships at LinkedIn, Leidos, and Dell Technologies, I&apos;ve built developer
-                sentiment surveys, multi-agent workflows, RAG pipelines, and real-time telemetry analysis.
-              </p>
-              <p>
-                Outside of work, I founded VCU&apos;s first ColorStack chapter and care deeply about
-                creating more room for underrepresented students to grow in computer science.
-              </p>
+              <p className="about-lede" data-testid="text-about-lede">I like figuring things out, especially when I don’t know where to start.</p>
+              <p>I’m a senior studying computer science at Virginia Commonwealth University, with a minor in artificial intelligence. I got into computer science because I wanted to understand how things worked. That curiosity has taken me into developer tools, AI, and data systems through internships at LinkedIn, Leidos, and Dell Technologies.</p>
+              <p>What I’ve enjoyed most is working through the messy parts: learning an unfamiliar system, asking questions, and slowly seeing how the pieces fit. I’m still learning what kind of work I want to do more of, and these projects have helped me figure that out.</p>
+              <p>Outside of internships and classes, a big part of my college life is community. This is my second year leading Black Muslim Collective at my university as President. Planning events, bringing people together, and making sure someone new feels welcome are some of my favorite things.</p>
+              <aside className="about-next" aria-label="What’s next">
+                <h3>What’s next</h3>
+                <p>Graduation in May 2027 and starting a full-time Software Engineering role. Graduate school is something I’d like to explore in the near future, as well.</p>
+              </aside>
             </div>
           </div>
           <div className="principles" aria-label="Working principles">
             <article className="principle" data-testid="card-principle-01">
-              <span className="principle-number">/ 01</span>
-               <h3>Build for the whole system.</h3>
-               <p>Reliable work respects the data, the interfaces, and the people around them.</p>
+              <span className="principle-number">01 / Build</span>
+               <h3>I like figuring out how things work.</h3>
+               <p>Working on one part usually makes me curious about the rest. I ask questions, follow the code, and try to understand why things were built that way.</p>
             </article>
             <article className="principle" data-testid="card-principle-02">
-              <span className="principle-number">/ 02</span>
-               <h3>Make intelligence useful.</h3>
-               <p>The best AI work gives someone a clearer next step, not just a clever output.</p>
+              <span className="principle-number">02 / Learn</span>
+               <h3>There’s always something new to learn.</h3>
+               <p>Every internship has introduced me to tools I’d never used before. I’m getting better at asking for help, trying things out, and learning as I go.</p>
             </article>
             <article className="principle" data-testid="card-principle-03">
-              <span className="principle-number">/ 03</span>
-               <h3>Bring people with you.</h3>
-               <p>Strong technical communities make better work possible for everyone.</p>
+              <span className="principle-number">03 / Community</span>
+               <h3>It’s better with other people.</h3>
+               <p>Some of my favorite parts of college have been bringing people together through ColorStack and the Black Muslim Collective. I want other students to find their people, too.</p>
             </article>
+          </div>
+        </section>
+
+        <section className="section" id="experience" aria-labelledby="experience-title">
+          <div className="section-heading">
+            <p className="section-kicker"><span className="section-number">02 /</span> Experience</p>
+            <h2 className="section-title" id="experience-title" data-testid="text-experience-title">
+              My <em>Internship Experiences.</em>
+            </h2>
+          </div>
+          <p className="section-intro">Each experience has taught me something different about how software gets built and how much there still is to learn.</p>
+          <div className="experience-list">
+            {experiences.map((experience, index) => (
+              <article className="experience-row" key={experience.organization} data-testid={`row-experience-${index + 1}`}>
+                <span className="experience-date">{experience.date}</span>
+                <a className="experience-org experience-company-link" href={experience.website} target="_blank" rel="noreferrer" aria-label={`Visit ${experience.organization} website`}>
+                  <img className="experience-logo" src={experience.logoUrl} alt="" />
+                  {experience.organization}
+                  <ArrowUpRight className="experience-company-arrow" size={13} strokeWidth={1.5} aria-hidden="true" />
+                </a>
+                <div className="experience-detail">
+                  <h3 className="experience-role">{experience.role}</h3>
+                  {experience.context && <p className="work-context">{experience.context}</p>}
+                  <p className="experience-detail">{experience.detail}</p>
+                </div>
+                <span className="experience-index">0{index + 1}</span>
+              </article>
+            ))}
           </div>
         </section>
 
         <section className="section" id="work" aria-labelledby="work-title">
           <div className="section-heading">
-            <p className="section-kicker">02 / Selected work</p>
+            <p className="section-kicker"><span className="section-number">03 /</span> Projects</p>
             <h2 className="section-title" id="work-title" data-testid="text-work-title">
-              A few things I&apos;ve helped <em>into the world.</em>
+              A few things I&apos;ve <em>built.</em>
             </h2>
           </div>
+          <p className="section-intro">A mix of internship projects, machine learning work, and things I&apos;ve helped bring into the world.</p>
           <div className="work-list">
             {projects.map((project, index) => (
               <a
@@ -547,10 +566,13 @@ function Home() {
                 data-testid={`link-project-${index + 1}`}
               >
                 <span className="work-year">{project.year}</span>
-                <h3 className="work-name">{project.name}</h3>
+                <div className="work-heading"><h3 className="work-name">{project.name}</h3>{project.context && <p className="work-context"><strong>{project.context}</strong></p>}</div>
                 <div>
                   <span className="work-type">{project.type}</span>
                   <p className="work-summary">{project.summary}</p>
+                  <p className="work-summary">{project.detail}</p>
+                  {project.recognition && <p className="work-recognition">{project.recognition}</p>}
+                  <p className="work-tools"><strong>Worked with</strong>{project.tools}</p>
                 </div>
                 <span className="work-arrow" aria-hidden="true">
                   <ArrowUpRight size={15} strokeWidth={1.5} />
@@ -558,6 +580,12 @@ function Home() {
               </a>
             ))}
           </div>
+          <aside className="recognition-strip" aria-label="Recognition">
+            <p className="section-kicker">Recognition</p>
+            <p><strong>1st Place</strong><span>JPMorgan Chase Data for Good Hackathon<br />Machine Learning &amp; Social Impact</span></p>
+            <p><strong>Kamala Scholar</strong><span>Grace Hopper Celebration</span></p>
+            <p><strong>Ray Greenly Scholarship Recipient</strong><span>National Retail Federation Foundation Student Program</span></p>
+          </aside>
           <div className="work-footer">
                <a
                  className="text-link"
@@ -571,35 +599,14 @@ function Home() {
           </div>
         </section>
 
-        <section className="section" id="experience" aria-labelledby="experience-title">
-          <div className="section-heading">
-            <p className="section-kicker">03 / Experience</p>
-            <h2 className="section-title" id="experience-title" data-testid="text-experience-title">
-              The places, teams, and <em>chapters.</em>
-            </h2>
-          </div>
-          <div className="experience-list">
-            {experiences.map((experience, index) => (
-              <article className="experience-row" key={experience.organization} data-testid={`row-experience-${index + 1}`}>
-                <span className="experience-date">{experience.date}</span>
-                <span className="experience-org">{experience.organization}</span>
-                <div className="experience-detail">
-                  <h3 className="experience-role">{experience.role}</h3>
-                  <p className="experience-detail">{experience.detail}</p>
-                </div>
-                <span className="experience-index">0{index + 1}</span>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section className="section" id="leadership" aria-labelledby="leadership-title">
           <div className="section-heading">
-            <p className="section-kicker">04 / Leadership & Professional Development</p>
+            <p className="section-kicker"><span className="section-number">04 /</span> Leadership &amp; Professional Development</p>
             <h2 className="section-title" id="leadership-title" data-testid="text-leadership-title">
               Building the <em>room around the work.</em>
             </h2>
           </div>
+          <p className="section-intro">The communities I’ve helped lead, programs that have invested in my growth, and rooms where I’ve had the chance to learn from other people.</p>
           <div className="development-heading development-heading--first">
             <p className="section-kicker">Leadership & Organizations</p>
             <p className="development-intro">
@@ -632,81 +639,81 @@ function Home() {
           <div className="development-heading">
             <p className="section-kicker">Conferences & Summits</p>
             <p className="development-intro">
-              Rooms where I&apos;ve learned, networked, and found new ways into the work.
+              Conferences, summits, and opportunities I’ve attended or been selected to join.
             </p>
           </div>
-          {renderDevelopmentGrid(conferences, 'Conferences and summits')}
-        </section>
-
-        <section className="section" id="writing" aria-labelledby="writing-title">
-          <div className="section-heading">
-            <p className="section-kicker">05 / Writing</p>
-            <h2 className="section-title" id="writing-title" data-testid="text-writing-title">
-              Questions from the <em>workbench.</em>
-            </h2>
+          <div className="conference-grid">
+            {renderDevelopmentGrid(conferences, 'Conferences and summits')}
           </div>
-          <div className="writing-grid">
-            {writing.map((entry, index) => (
-              <a
-                className="writing-card"
-                href={entry.href}
-                target="_blank"
-                rel="noreferrer"
-                key={entry.title}
-                data-testid={`link-writing-${index + 1}`}
-              >
-                <div className="writing-meta">
-                  <span>{entry.date}</span>
-                  <ArrowUpRight size={14} strokeWidth={1.5} />
-                </div>
-                <div>
-                  <h3 className="writing-title">{entry.title}</h3>
-                  <p className="writing-excerpt">{entry.excerpt}</p>
-                </div>
-                <div className="writing-read">
-                   <span>Explore focus</span>
-                  <span aria-hidden="true">↗</span>
-                </div>
-              </a>
-            ))}
+          <div className="development-heading">
+            <p className="section-kicker">Communities & Affiliations</p>
+            <p className="development-intro">Communities that have shaped how I learn, connect, and grow.</p>
           </div>
+          {renderDevelopmentGrid(affiliations, 'Communities and affiliations')}
         </section>
 
         <section className="section contact-section" id="recruiters" aria-labelledby="contact-title">
           <div className="contact-panel">
-            <div>
-              <p className="section-kicker">06 / For Recruiters</p>
+            <div className="contact-summary">
+              <p className="section-kicker"><span className="section-number">05 /</span> For Recruiters</p>
               <h2 className="contact-title" id="contact-title" data-testid="text-contact-title">
-                A clear case for working together.
+                The short version.
               </h2>
               <p className="contact-subtitle" data-testid="text-contact-description">
-                I&apos;m currently open to full-time software engineering and AI/ML opportunities. My strongest fit is
-                at the intersection of developer platforms, applied AI, data systems, and infrastructure.
+                I’m a senior at Virginia Commonwealth University studying Computer Science with a Minor in Artificial Intelligence, graduating in May 2027.
               </p>
+              <p className="contact-subtitle">I’ve interned at LinkedIn, Leidos, and Dell Technologies, working across developer platforms, applied artificial intelligence, data systems, retrieval, and internal tools. I’m currently looking for full-time software engineering opportunities beginning in 2027.</p>
+            </div>
+            <dl className="recruiter-facts" data-testid="recruiter-facts">
+              <div><dt>Education</dt><dd>Virginia Commonwealth University<br />Bachelor of Science in Computer Science<br />Minor in Artificial Intelligence<br />Expected May 2027</dd></div>
+              <div><dt>Interested in</dt><dd>Software engineering · artificial intelligence and machine learning · developer platforms · data systems · infrastructure</dd></div>
+              <div><dt>Experience</dt><dd>LinkedIn · Leidos · Dell Technologies</dd></div>
+              <div><dt>Based in</dt><dd>Greater Washington, DC Area</dd></div>
+              <div><dt>Currently</dt><dd>Looking for full-time opportunities beginning in 2027</dd></div>
+            </dl>
+            <div className="contact-invitation">
+              <p>If something here made you curious, feel free to reach out!</p>
             </div>
             <div className="contact-links">
               <a className="contact-link" href={`mailto:${emailAddress}`} data-testid="link-email">
-                <span><Mail size={14} strokeWidth={1.5} aria-hidden="true" /> {emailAddress}</span>
+                <span><Mail size={14} strokeWidth={1.5} aria-hidden="true" /> Email</span>
                 <ArrowUpRight size={15} strokeWidth={1.5} />
               </a>
               <a className="contact-link" href={linkedinUrl} target="_blank" rel="noreferrer" data-testid="link-linkedin">
-                <span><Linkedin size={14} strokeWidth={1.5} aria-hidden="true" /> Connect on LinkedIn</span>
+                <span><Linkedin size={14} strokeWidth={1.5} aria-hidden="true" /> LinkedIn</span>
                 <ArrowUpRight size={15} strokeWidth={1.5} />
               </a>
-              <button className="contact-link" type="button" onClick={copyProfileLink} data-testid="button-copy-email">
-                <span>
-                  {copied ? <Check size={14} strokeWidth={1.5} aria-hidden="true" /> : <Copy size={14} strokeWidth={1.5} aria-hidden="true" />}
-                  {copied ? 'Copied profile link' : 'Copy LinkedIn profile'}
-                </span>
-                {copied ? <Check size={15} strokeWidth={1.5} /> : <Copy size={15} strokeWidth={1.5} />}
-              </button>
+              <a className="contact-link" href={githubUrl} target="_blank" rel="noreferrer" data-testid="link-github">
+                <span><Github size={14} strokeWidth={1.5} aria-hidden="true" /> GitHub</span>
+                <ArrowUpRight size={15} strokeWidth={1.5} />
+              </a>
             </div>
           </div>
         </section>
 
+        <section className="section resume-section" id="resume" aria-labelledby="resume-title">
+          <div className="section-heading">
+            <p className="section-kicker"><span className="section-number">06 /</span> Resume</p>
+            <h2 className="section-title" id="resume-title">
+              The one-page <em>version.</em>
+            </h2>
+          </div>
+          <div className="resume-card">
+            <div>
+              <p className="resume-card-label">Condensed experience, projects, and skills</p>
+              <h3>View my resume</h3>
+            </div>
+            <a className="resume-card-link" href={resumeUrl} target="_blank" rel="noreferrer" data-testid="link-resume">
+              <ExternalLink size={18} strokeWidth={1.5} aria-hidden="true" />
+              Open PDF
+              <ArrowUpRight size={18} strokeWidth={1.5} aria-hidden="true" />
+            </a>
+          </div>
+        </section>
+
         <footer className="footer">
-          <p data-testid="text-footer-name">Amra Ibrahim / software engineer</p>
-          <p data-testid="text-footer-note"><Rss size={12} strokeWidth={1.5} aria-hidden="true" /> Last updated · 2026</p>
+          <p data-testid="text-footer-name">amra ibrahim / notebook</p>
+          <p data-testid="text-footer-note"><Rss size={12} strokeWidth={1.5} aria-hidden="true" /> Built, edited, and still being revised.</p>
         </footer>
       </main>
     </div>
